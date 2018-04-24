@@ -1,14 +1,14 @@
 header {
     background: #353637;
     color: white;
-    padding-top: 13px;
+    padding-top: 0.5em;
     min-height: 70px;
-    border-bottom: #32a0c2 3px solid;
+    border-bottom: firebrick 3px solid;
 
 }
 
 .header-container {
-    width:90%;
+    width:95%;
     margin: auto;
     overflow: hidden;
 }
@@ -19,6 +19,13 @@ header a{
     text-decoration: none;
     text-transform: uppercase;
     font-size: 16px;
+
+}
+
+/* current class in header,  puts a red underline below the name of the current page */
+header .current a{
+    border-bottom: red 3px solid;
+    font-weight: bold;
 
 }
 /*list elements in the header*/
@@ -38,5 +45,30 @@ header #branding h1{
 
 header nav {
     float: right;
-    
 }
+
+nav .icon {
+  display: none;
+}
+
+
+/*
+  When the screen is less than 785 px, hide the links and show the hambruger menu icon
+
+*/
+@media screen and (max-width: 785px) {
+    header li {
+      padding: 0em;
+      font-size: 10px;
+    }
+
+    header nav a {
+       display: none;
+    }
+
+    header nav a.icon {
+        float: right;
+        display: block;
+    }
+}
+
