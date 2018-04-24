@@ -3,8 +3,6 @@ header {
     color: white;
     padding-top: 0.5em;
     min-height: 70px;
-    border-bottom: firebrick 3px solid;
-
 }
 
 .header-container {
@@ -13,26 +11,24 @@ header {
     overflow: hidden;
 }
 
-/* link elements in the header*/
-header a{
-    color: white;
-    text-decoration: none;
-    text-transform: uppercase;
-    font-size: 16px;
 
-}
 
 /* current class in header,  puts a red underline below the name of the current page */
-header .current a{
-    border-bottom: red 3px solid;
+header a.current{
+    text-decoration: underline;
+    text-decoration-color: red;
     font-weight: bold;
 
 }
 /*list elements in the header*/
-header li {
+.nav a {
     float: left;
-    display: inline;
-    padding: 0 20px 0 20px;
+    display: block;
+    padding: 0 10px 0 20px;
+    color: white;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-size: 16px;
 }
 
 header #branding{
@@ -43,11 +39,11 @@ header #branding h1{
     margin: 0;
 }
 
-header nav {
+header .nav {
     float: right;
 }
 
-nav .icon {
+.nav .icon {
   display: none;
 }
 
@@ -57,18 +53,38 @@ nav .icon {
 
 */
 @media screen and (max-width: 785px) {
-    header li {
-      padding: 0em;
-      font-size: 10px;
-    }
-
-    header nav a {
+    header .nav a {
        display: none;
+       padding: 0px;
     }
 
-    header nav a.icon {
+    header .nav a.icon {
         float: right;
         display: block;
+        font-size: 2em;
     }
+
+}
+
+@media screen and (max-width: 785px) {
+  .nav.responsive {
+      position: relative;
+    }
+
+  .responsive a.icon{
+   position: absolute;
+   right: 0;
+   top: 0;
+  }
+
+  .nav.responsive a{
+    float: none;
+    display: block;
+    text-align: left;
+  }
+
+  .nav.responsive {
+      float: none;
+  }
 }
 
