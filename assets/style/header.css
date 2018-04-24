@@ -1,0 +1,42 @@
+header {
+    background: #353637;
+    color: white;
+    padding-top: 13px;
+    min-height: 70px;
+    border-bottom: #32a0c2 3px solid;
+
+}
+
+.header-container {
+    width:90%;
+    margin: auto;
+    overflow: hidden;
+}
+
+/* link elements in the header*/
+header a{
+    color: white;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-size: 16px;
+
+}
+/*list elements in the header*/
+header li {
+    float: left;
+    display: inline;
+    padding: 0 20px 0 20px;
+}
+
+header #branding{
+    float: left;
+}
+
+header #branding h1{
+    margin: 0;
+}
+
+header nav {
+    float: right;
+    
+}
