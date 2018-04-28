@@ -1,0 +1,31 @@
+/* Desktop width banner  */
+#banner {
+    min-height: 400px;
+    background: url('../images/audi.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: -10%;
+    width: 100%;
+}
+
+/* Tablet width banner */
+@media screen and (max-width: 850px) {
+    #banner {
+        min-height: 400px;
+        background: url('../images/mpower.png');
+        background-size: cover;
+        background-repeat: no-repeat;
+        width: 100%;
+    }
+}
+
+/* Mobile width banner */
+@media screen and (max-width: 600px) {
+    #banner {
+        min-height: 500px;
+        background: url('../images/rupes.jpg');
+        background-size: contain;
+        background-repeat: no-repeat;
+        width: 100%;
+    }
+}
