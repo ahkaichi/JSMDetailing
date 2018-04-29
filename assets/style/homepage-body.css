@@ -21,8 +21,9 @@
 
 /* Product showcase styling */
 .products {
-  margin: auto;
+  margin-bottom: 5%;
   padding-top: 2%;
+  
 }
 
 .category-list {
@@ -45,7 +46,7 @@
 }
 
 
-.item {
+.item, .service-heading {
   font-weight: bold;
 }
 
@@ -63,4 +64,26 @@
     width: 90%;
     margin-bottom: 10%;
   }
+}
+
+.service {
+  margin: auto;
+  width: 90%;
+  border-top: 2.5px solid black;
+  display: flex;
+}
+
+.service-column {
+  float: left;
+  flex: 50%;
+  text-align: center;
+}
+
+/*  Create a border on the right side of the first div in the service section   */
+.service div:first-child {
+  border-right: 2px solid black;
+}
+
+#contact-info span {
+  font-size: 1.2em;
 }
