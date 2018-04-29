@@ -14,7 +14,7 @@
   color: white;
 }
 
-.information a:hover {
+.information a:hover, .account span a:hover {
   color: firebrick;
 }
 
@@ -84,6 +84,30 @@
   border-right: 2px solid black;
 }
 
-#contact-info span {
-  font-size: 1.2em;
+#contact-info span, #account-info span {
+  font-size: 1.1em;
+}
+
+@media only screen and (max-width: 600px) {
+  .item, .service-heading {
+    text-decoration: underline;
+  }
+
+  /* Remove border styles at mobile width */
+  .service {
+    border-top: none;
+    display: block;
+  }
+
+  .service div:first-child {
+    border-right: none;
+  }
+  
+  .service-column {
+    width: 100%;
+  }
+
+  #contact-info span, #account-info span {
+    font-size: inherit;
+  }
 }
