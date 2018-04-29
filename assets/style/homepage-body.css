@@ -64,6 +64,10 @@
     width: 90%;
     margin-bottom: 10%;
   }
+
+  .products {
+    margin-bottom: 1%;
+  }
 }
 
 .service {
