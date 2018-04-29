@@ -3,11 +3,10 @@
   color: white;
   background: #353637;
   padding: 0% 2% 2% 2%;;
-  padding-bottom: 2%;
  }
 
 .information {
-  padding: 0% 1%;
+  padding: 0% 2%;
 }
 
 .information a {
@@ -63,10 +62,6 @@
   .category {
     width: 90%;
     margin-bottom: 10%;
-  }
-
-  .products {
-    margin-bottom: 1%;
   }
 }
 
