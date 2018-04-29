@@ -22,10 +22,11 @@
 /* Mobile width banner */
 @media screen and (max-width: 600px) {
     #banner {
-        min-height: 500px;
+        min-height: 300px;
         background: url('../images/rupes.jpg');
-        background-size: contain;
+        background-size: cover;
         background-repeat: no-repeat;
         width: 100%;
+        background-position-x: +5%;
     }
 }

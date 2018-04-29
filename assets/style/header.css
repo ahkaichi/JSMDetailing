@@ -58,6 +58,10 @@ header a.current{
   
   /* Styles for mobile layout */
   @media screen and (max-width: 600px) {
+    header {
+        min-height: 50px;
+    }
+    
     .topnav{position: relative;}
     .topnav a {
       float: none;
