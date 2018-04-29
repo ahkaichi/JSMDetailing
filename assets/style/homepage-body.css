@@ -3,4 +3,17 @@
   color: white;
   background: #353637;
   padding: 0% 2%;
+ }
+
+.information {
+  padding: 0% 1%;
 }
+
+.information a {
+  color: white;
+}
+
+.information a:hover {
+  color: firebrick;
+}
+
