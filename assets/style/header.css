@@ -22,16 +22,6 @@ header a.current{
 
 }
 
-header #branding{
-    float: left;
-}
-
-header #branding h1{
-    margin: 0;
-}
-
-
-
 
 /* Styles for navbar when it is in desktop width */
 .topnav {
