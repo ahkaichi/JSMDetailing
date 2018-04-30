@@ -12,6 +12,10 @@ header {
     overflow: hidden;
 }
 
+.branding a {
+  color: white;
+  text-decoration: none;
+}
 
 
 /* current class in header,  puts a red underline below the name of the current page */
