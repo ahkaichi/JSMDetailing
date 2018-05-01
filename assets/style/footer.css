@@ -1,0 +1,21 @@
+.footer {
+    margin-top: 5%;
+    padding: 1% 3% 2% 3%;
+    background: #353637;
+    color: white;
+    clear: both;
+    bottom: 0;
+}
+
+/* Footer styling for mobile screens */
+@media screen and (max-width: 600px) {
+    .footer {
+      padding: 2% 3% 2% 3%;
+      margin-top: 25em;
+    }
+}
+
+
+#disclaimer {
+    font-style: italic;
+}

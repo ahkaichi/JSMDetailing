@@ -1,0 +1,112 @@
+#about {
+  overflow: hidden;
+  color: white;
+  background: #353637;
+  padding: 0% 2% 2% 2%;;
+ }
+
+.information {
+  padding: 0% 2%;
+}
+
+.information a {
+  color: white;
+}
+
+.information a:hover, .account span a:hover {
+  color: red;
+}
+
+
+/* Product showcase styling */
+.products {
+  margin-bottom: 5%;
+  padding-top: 2%;
+  
+}
+
+.category-list {
+  width: 90%;
+  margin: auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.category {
+  width: 30%;
+  float: left;
+  text-align: center;
+  padding: 0% 1%;
+}
+
+.category img {
+  width: 100%;
+}
+
+
+.item, .service-heading {
+  font-weight: bold;
+}
+
+.item-description {
+  margin: 0% 5%;
+
+}
+
+/* 
+  Changes how the images will appear when tablet width is achieved.
+  Instead of 3 columns, display as 1 column
+*/
+@media only screen and (max-width: 850px) {
+  .category {
+    width: 90%;
+    margin-bottom: 10%;
+  }
+}
+
+.service {
+  margin: auto;
+  width: 90%;
+  border-top: 2.5px solid black;
+  display: flex;
+}
+
+.service-column {
+  float: left;
+  flex: 50%;
+  text-align: center;
+}
+
+/*  Create a border on the right side of the first div in the service section   */
+.service div:first-child {
+  border-right: 2px solid black;
+}
+
+#contact-info span, #account-info span {
+  font-size: 1.1em;
+}
+
+@media only screen and (max-width: 600px) {
+  .item, .service-heading {
+    text-decoration: underline;
+  }
+
+  /* Remove border styles at mobile width */
+  .service {
+    border-top: none;
+    display: block;
+  }
+
+  .service div:first-child {
+    border-right: none;
+  }
+  
+  .service-column {
+    width: 100%;
+  }
+
+  #contact-info span, #account-info span {
+    font-size: inherit;
+  }
+}
