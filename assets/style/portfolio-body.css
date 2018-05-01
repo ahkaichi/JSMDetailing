@@ -1,0 +1,31 @@
+.content {
+  width: 90%;
+  margin: auto;
+}
+
+.description p {
+  margin: 0% 2%;
+}
+
+.images{
+    margin-top: 5%;
+    width: 100%;
+    justify-content: center;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.img-container {
+    width: 30%;
+   padding: 2% 1% 0% 1%;
+}
+
+.img-container img{
+    width: 100%;
+    padding: 1px;
+    border: 1px solid #021a40;
+    float: left;
+    max-width: 600px;
+}
+
