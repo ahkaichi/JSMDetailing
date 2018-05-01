@@ -1,0 +1,64 @@
+.content {
+  width: 90%;
+  margin: auto;
+}
+
+.description p {
+  margin: 0% 2%;
+}
+
+.images{
+    margin-top: 5%;
+    margin-bottom: 8%;
+    width: 100%;
+    justify-content: center;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.img-container {
+    width: 30%;
+   padding: 2% 1% 0% 1%;
+}
+
+.img-container img{
+    width: 100%;
+    padding: 1px;
+    border: 1px solid #021a40;
+    float: left;
+    max-width: 600px;
+}
+
+/* Display 2 images side by side on tablet screen size */
+@media only screen and (max-width: 850px) {
+    .img-container{
+        width: 45%;
+        padding: 2% 2% 0% 2%;
+    }
+
+    .insta p {
+        font-size: 1.2em;
+    }
+}
+
+/* Display 1 image at a time on mobile screen  */
+@media only screen and (max-width: 600px) {
+    .img-container{
+        width: 95%;
+        margin-bottom: 5%;
+    }
+}
+
+
+/*  Instagram tag at the bottom of the page  */
+.insta {
+    width: inherit;
+    margin: auto;
+    text-align: center;
+}
+
+.insta a {
+    color: red;
+}
+
