@@ -16,29 +16,43 @@ function isEmpty(){
         if (!flag) {
         alert('Please select a Detailing package first.')
         }
+        else {
+            totalPrice();
+        }
     }
     
     
 }
 
-function isChecked(){
-    var size = []
-    size = Array.from(document.getElementsByClassName("vehicle-type"));
-    var flag = false
-     
-}
-
-
 function required(x){
     x.preventDefault();
     isEmpty();
-    isChecked();
 }
 
-vehicle: {
-    extra: [0, 10, 20]
-}
+function totalPrice() {
+    var size = 0;
+    var totalCost = 0;
+    
+    if (document.getElementById("coupe").checked == true) {
+        size = 0;
+    }
+    else if (document.getElementById("sedan").checked == true) {
+        size = 10;
+        
+    }
+    else if (document.getElementById("suv").checked == true) {
+        size = 20;
+    }
 
-package: {
-    cost: [400, 250, 50]
+    var items = Array.from(document.getElementsByClassName("package"))
+    
+    for(elem of items) {
+        if(elem.checked) {
+            totalCost += parseInt(elem.value)
+            
+        }
+    }
+    
+    totalCost += size;
+    alert(totalCost);
 }
