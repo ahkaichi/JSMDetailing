@@ -1,3 +1,5 @@
+
+
 function isEmpty(){
     var size = []
     size = Array.from(document.getElementsByClassName("vehicle-type"));
@@ -24,9 +26,10 @@ function isEmpty(){
     
 }
 
+
 function required(x){
-    x.preventDefault();
     isEmpty();
+    x.preventDefault();
 }
 
 function totalPrice() {
@@ -54,5 +57,5 @@ function totalPrice() {
     }
     
     totalCost += size;
-    alert(totalCost);
+    //alert(totalCost);
 }
