@@ -19,7 +19,7 @@
 .form input {
   font-family: "Roboto", sans-serif;
   outline: 0;
-  background: #f2f2f2;
+
   width: 100%;
   border: 0;
   margin: 0 0 15px;
@@ -89,3 +89,12 @@
 .container .info span .fa {
   color: #EF3B3A;
 }
+
+
+.error {
+    background: #FFCDD2;
+    box-shadow: 0 0 5px #FF5252;
+    border-color: #FF1744;    
+}
+ 
+  

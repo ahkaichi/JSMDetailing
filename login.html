@@ -13,6 +13,7 @@
     <link rel = "stylesheet" href = "./assets/style/footer.css">
     <link rel = "icon" href = "https://pbs.twimg.com/profile_images/810848436715192324/LceZ56vC_400x400.jpg">
     <link rel = "stylesheet" href = "./assets/style/login.css">
+    <script src="./assets/scripts/login.js"></script>
 </head>
 <body>
   <header>
@@ -34,21 +35,26 @@
     
       <div class="form">
           <br>
-        <form class="login-form" >
+        <form class="login-form" onsubmit="validate(this)" >
             <fieldset>
                 <legend>Log In to Schedule Service</legend>
          <label for="username"><b>Username:</b></label>
-        <input type="text" placeholder="Enter Username" name="username" class="required">
+        <input type="text" placeholder="Enter Username" id="username" name="username">
+        <span class ="error"> </span>        
         <br>
       <label for="password"><b>Password:</b></label>
-      <input type="password" placeholder="Enter Password" name="password" class="required">
+      <input type="password" placeholder="Enter Password" id="password" name="password">
+         <span class="error"></span> 
+                
         
             </fieldset>
          
      <br>
       <button type="submit">Log In <i class="fas fa-sign-in-alt"></i> </button>
           </form>  
-      
+     
+          <p>Don't have an account?</p>
+       <a href="register.html">Create an Account</a>
     </div>
     
 
