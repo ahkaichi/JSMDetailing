@@ -30,6 +30,17 @@
     max-width: 600px;
 }
 
+/* Animation to make the images fade in from the bottom.  */
+.animate-bottom{
+    position:relative;
+    /* Animation will last 0.75 seconds  */
+    animation:animatebottom 0.75s
+    /* In 0.75 seconds, make the opacity 1 (make the images visible). and remove the bottom spacing */
+}@keyframes animatebottom{
+    from {bottom:-300px;opacity:0} 
+    to {bottom:0;opacity:1}
+}
+
 /* Display 2 images side by side on tablet screen size */
 @media only screen and (max-width: 850px) {
     .img-container{
@@ -59,6 +70,6 @@
 }
 
 .insta a {
-    color: red;
+    color: navy;
 }
 
