@@ -1,3 +1,4 @@
+#!/usr/local/php5/bin/php-cgi
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -16,6 +17,20 @@
     <script src="./assets/scripts/login.js"></script>
 </head>
 <body>
+    <?php
+// define variables and set to empty values
+$host = "localhost";
+$database = "bookcrm";
+$user = "testuser";
+$pass = "mypassword";
+$err = "";    
+$db = mysqli_connect($host, $user, $pass, $database);
+    if( mysqli_connect_errno()){
+       echo "Failed to connect to MySQL: " . mysqli_connect_error();
+    }
+}
+
+?>
   <header>
    <div class="header-container">
        <div class="branding">
@@ -31,7 +46,32 @@
 
    </div>
   </header>
-
+      <?php
+  
+   
+   if($_SERVER["REQUEST_METHOD"] == "POST") {
+      // username and password sent from form 
+      
+      $myusername = mysqli_real_escape_string($db,$_POST['username']);
+      $mypassword = mysqli_real_escape_string($db,$_POST['password']); 
+      
+      $sql = "SELECT id FROM admin WHERE username = '$myusername' and passcode = '$mypassword'";
+      $result = mysqli_query($db,$sql) or die("Error: ".mysqli_error($db));
+      $row = mysqli_fetch_array($result,MYSQLI_ASSOC);
+      $active = $row['active'];
+      
+      $count = mysqli_num_rows($result);
+      
+      // If result matched $myusername and $mypassword, table row must be 1 row
+		
+      if($count == 1) {
+       mysqli_close($db)
+   
+      }else {
+         $error = "Your Login Name or Password is invalid";
+      }
+   }
+?>
     
       <div class="form">
           <br>
@@ -53,7 +93,7 @@
       <button type="submit">Log In <i class="fas fa-sign-in-alt"></i> </button>
           </form>  
      
-          <p>Don't have an account?</p>
+          <p>Dont have an account?</p>
        <a href="register.html">Create an Account</a>
     </div>
     
