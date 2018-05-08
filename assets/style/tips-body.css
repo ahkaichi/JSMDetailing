@@ -1,0 +1,32 @@
+.content {
+    width: 90%;
+    margin: auto;
+  }
+
+.description {
+    margin-bottom: 3em;
+}
+
+.description p, .tip p {
+    margin: 0% 2%;
+  }
+
+.tip img {
+  width: 45%;
+  margin: 2em auto;
+  display: block;
+}
+
+/* Image resizes at tablet and mobile widths */
+@media only screen and (max-width: 850px) {
+    .tip img {
+      width: 75%;
+    }
+}    
+
+@media only screen and (max-width: 600px) {
+    .tip img {
+      width: 90%;
+    }
+}    
+
