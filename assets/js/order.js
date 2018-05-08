@@ -1,4 +1,4 @@
-
+/*  Checks if the selection is empty  */
 
 function isEmpty(){
     var size = []
@@ -8,6 +8,7 @@ function isEmpty(){
 
     if(!checked){
         alert('Select a vehicle size.')
+        return false;
     }
     else{
         var required = []
@@ -16,10 +17,12 @@ function isEmpty(){
         flag = required.some(x => x.checked) //checks to see if a package is selected
 
         if (!flag) {
-        alert('Please select a Detailing package first.')
+          alert('Please select a Detailing package first.')
+          return false;
         }
         else {
             totalPrice();
+            return true;
         }
     }
     
@@ -28,8 +31,13 @@ function isEmpty(){
 
 
 function required(x){
-    isEmpty();
-    x.preventDefault();
+   console.log(isEmpty());
+
+   /* if the selection is empty, prevent form submission  */
+    if (!isEmpty()) {
+        x.preventDefault();
+    }
+    // x.preventDefault();
 }
 
 function totalPrice() {
