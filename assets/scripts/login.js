@@ -4,21 +4,25 @@ var pw = document.getElementById("password");
 var username = document.getElementById("username").value;
 var password = document.getElementById("password").value;
     
-if(username == ""){
+var flag = true
+    
+if(username.length == 0 || username == null){
 
    
     alert("Please enter your username");
      user.classList.add("error");
-    e.preventDefault();
+    flag = false;
    
 }
-else if(password == ""){
+else if(password.length == 0 || password == null){
     alert("Please enter your password");
      pw.classList.add("error");
-        e.preventDefault();
+      flag = false;
 }
-    else{
-        alert("Logging In");
+
+    
+    if(!flag){
+        e.preventDefault();
     }
     
 

@@ -1,28 +1,10 @@
 #!/usr/local/php5/bin/php-cgi
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>JSM Detailing</title>
-
-    <link rel = "stylesheet" href = "./assets/style/global.css">
-    <link rel = "stylesheet" href = "./assets/style/header.css">
-    <link rel = "stylesheet" href = "./assets/style/banner.css">
-    <link rel = "stylesheet" href = "./assets/style/homepage-body.css">
-    <link rel = "stylesheet" href = "./assets/style/footer.css">
-    <link rel = "icon" href = "https://pbs.twimg.com/profile_images/810848436715192324/LceZ56vC_400x400.jpg">
-    <link rel = "stylesheet" href = "./assets/style/login.css">
-    <script src="./assets/scripts/login.js"></script>
-</head>
-<body>
-    <?php
+ <?php
 // define variables and set to empty values
-$host = "localhost";
-$database = "bookcrm";
-$user = "testuser";
-$pass = "mypassword";
+$host = "cecs-db01.coe.csulb.edu:3306";
+$database = "";
+$user = "cecs470o26";
+$pass = "oo7emo";
 $err = "";    
 $db = mysqli_connect($host, $user, $pass, $database);
     if( mysqli_connect_errno()){
@@ -31,22 +13,7 @@ $db = mysqli_connect($host, $user, $pass, $database);
 }
 
 ?>
-  <header>
-   <div class="header-container">
-       <div class="branding">
-           <h1>  <a href = "index.html"> <i class="fab fa-pushed"></i>JSM Detailing </a> </h1>
-       </div>
-
-       <div class="topnav">
-        <a href="index.html" >Home</a>
-        <a href="portfolio.html">Portfolio</a>
-        <a href="#sign">Registration</a>
-        <a href="#schedule" class="current">Schedule Service</a>
-      </div>
-
-   </div>
-  </header>
-      <?php
+<?php
   
    
    if($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -72,10 +39,46 @@ $db = mysqli_connect($host, $user, $pass, $database);
       }
    }
 ?>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>JSM Detailing</title>
+
+    <link rel = "stylesheet" href = "./assets/style/global.css">
+    <link rel = "stylesheet" href = "./assets/style/header.css">
+    <link rel = "stylesheet" href = "./assets/style/banner.css">
+    <link rel = "stylesheet" href = "./assets/style/homepage-body.css">
+    <link rel = "stylesheet" href = "./assets/style/footer.css">
+    <link rel = "icon" href = "https://pbs.twimg.com/profile_images/810848436715192324/LceZ56vC_400x400.jpg">
+    <link rel = "stylesheet" href = "./assets/style/login.css">
+    <script src="./assets/scripts/login.js"></script>
+</head>
+<body>
+   
+  <header>
+   <div class="header-container">
+       <div class="branding">
+           <h1>  <a href = "index.html"> <i class="fab fa-pushed"></i>JSM Detailing </a> </h1>
+       </div>
+
+       <div class="topnav">
+        <a href="index.html" >Home</a>
+        <a href="portfolio.html">Portfolio</a>
+        <a href="#sign">Registration</a>
+        <a href="#schedule" class="current">Schedule Service</a>
+      </div>
+
+   </div>
+  </header>
+      
     
       <div class="form">
           <br>
-        <form class="login-form" onsubmit="validate(this)" >
+        <form class="login-form" onsubmit="validate(event)" >
             <fieldset>
                 <legend>Log In to Schedule Service</legend>
          <label for="username"><b>Username:</b></label>
