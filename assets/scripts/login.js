@@ -1,3 +1,5 @@
+/* This Function checks the user input for null or blank inputs. 
+    if either case happens, the preventdefault method is called */
 function validate(e){
 var user = document.getElementById("username");
 var pw = document.getElementById("password");    
