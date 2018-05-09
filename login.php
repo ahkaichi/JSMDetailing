@@ -44,8 +44,8 @@ $db = mysqli_connect($host, $user, $pass, $database, $port);
                 <div class="topnav">
                     <a href="index.html" >Home</a>
                     <a href="portfolio.html">Portfolio</a>
-                    <a href="#sign">Registration</a>
-                    <a href="#schedule" class="current">Schedule Service</a>
+                    <a href="register.php">Registration</a>
+                    <a href="login.php" class="current">Schedule Service</a>
                 </div>
 
             </div>
@@ -106,7 +106,7 @@ $db = mysqli_connect($host, $user, $pass, $database, $port);
 
         <div class="form">
             <br>
-            <form class="login-form" onsubmit="validate(event)" method="post">
+            <form class="login-form" onsubmit="validate(event)" method="post" action="service.php">
                 <fieldset>
                     <legend>Log In to Schedule Service</legend>
                     <label for="username"><b>Username:</b></label>
