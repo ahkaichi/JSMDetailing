@@ -34,7 +34,8 @@
 .animate-bottom{
     position:relative;
     /* Animation will last 0.75 seconds  */
-    animation:animatebottom 0.75s
+    animation:animatebottom 0.75s;
+    -webkit-animation: animatebottom 0.75s;
     /* In 0.75 seconds, make the opacity 1 (make the images visible). and remove the bottom spacing */
 }@keyframes animatebottom{
     from {bottom:-300px;opacity:0} 
