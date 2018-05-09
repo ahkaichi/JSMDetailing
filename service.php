@@ -6,6 +6,7 @@
  $validForm = true;
  $exterior = $interior = $headlights = "";
  $orderCart = "";
+$price = 0;
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     
@@ -16,6 +17,19 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     else {
         $vehicle = test_input($_POST["vehicle"]);
         echo $vehicle;
+        
+                
+            if( $vehicle == 'Sedan')  { 
+                $price = $price + 10;
+            }
+            else if( $vehicle == 'Coupe'){
+                $price = $price;
+            }
+            else{
+                $price = $price + 20;
+            }
+        
+        
     }
     
     if ( (!isset($_POST["exterior"])) && (!isset($_POST["interior"])) && (!isset($_POST["headlights"]))) {
@@ -26,14 +40,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         //$detail = test_input($_POST["exterior"]);
         if(isset($_POST["exterior"])){
             $exterior = "\nExterior Detailing";
+            $price = $price + (int)$_POST["exterior"];
             $orderCart = nl2br($orderCart.$exterior);
         }
         if(isset($_POST["interior"])){
             $interior = "\nInterior Detailing";
+            $price = $price + (int)$_POST["interior"];
             $orderCart = nl2br($orderCart.$interior);
         }
         if(isset($_POST["headlights"])){
             $headlights = "\nHeadlight Restoration";
+            $price = $price + (int)$_POST["headlights"];
             $orderCart = nl2br($orderCart.$headlights);
         }
     }
@@ -41,6 +58,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     
     
 }
+
 
 function clearValues(){
     $GLOBALS['vehicle'] = null;
@@ -60,6 +78,7 @@ function test_input($data) {
       echo '<p>'.date("m/d/Y") . '</p>';
       echo '<p>Vehicle Type: ' . $GLOBALS['vehicle'] . '</p>';
       echo '<p>Selected Package: ' . $GLOBALS['orderCart'] . '</p>';
+     echo '<p>Price: $' . $GLOBALS['price'] . '</p>';
 //      echo '<p>'.$orderCart.'</p>';
      clearValues();
      
