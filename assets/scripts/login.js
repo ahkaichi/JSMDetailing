@@ -18,6 +18,7 @@ if(username.length == 0 || username == null){
 }
 else if(password.length == 0 || password == null){
     alert("Please enter your password");
+    user.classList.remove("error");
      pw.classList.add("error");
       flag = false;
 }

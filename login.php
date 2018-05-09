@@ -122,7 +122,7 @@ $db = mysqli_connect($host, $user, $pass, $database, $port);
                 <button type="submit">Log In <i class="fas fa-sign-in-alt"></i> </button>
             </form>  
 
-            <p>Dont have an account?</p>
+            <p>Don't have an account?</p>
             <a href="register.php">Create an Account</a>
         </div>
 
