@@ -8,6 +8,8 @@ $user = "cecs470o26";
 $pass = "oo7emo";
 $port = "3306";
 $err = "";
+$userErr = "";
+$passErr ="";
 $username = $_POST['username'];
 $password = $_POST['password'];
 // connect to the MYSQL database
@@ -25,7 +27,6 @@ $db = mysqli_connect($host, $user, $pass, $database, $port);
         <link rel = "stylesheet" href = "./assets/style/global.css">
         <link rel = "stylesheet" href = "./assets/style/header.css">
         <link rel = "stylesheet" href = "./assets/style/banner.css">
-        <link rel = "stylesheet" href = "./assets/style/homepage-body.css">
         <link rel = "stylesheet" href = "./assets/style/footer.css">
         <link rel = "icon" href = "https://pbs.twimg.com/profile_images/810848436715192324/LceZ56vC_400x400.jpg">
         <link rel = "stylesheet" href = "./assets/style/login.css">
@@ -37,7 +38,7 @@ $db = mysqli_connect($host, $user, $pass, $database, $port);
         <header>
             <div class="header-container">
                 <div class="branding">
-                    <h1>  <a href = "index.html"> <i class="fab fa-pushed"></i>JSM Detailing </a> </h1>
+                    <h1>  <a href = "login.php"> <i class="fab fa-pushed"></i>JSM Detailing </a> </h1>
                 </div>
 
                 <div class="topnav">
@@ -49,31 +50,7 @@ $db = mysqli_connect($host, $user, $pass, $database, $port);
 
             </div>
         </header>
-
-
-        <div class="form">
-            <br>
-            <form class="login-form" onsubmit="validate(event)" method="post" >
-                <fieldset>
-                    <legend>Log In to Schedule Service</legend>
-                    <label for="username"><b>Username:</b></label>
-                    <input type="text" placeholder="Enter Username" id="username" name="username">
-                    <span class ="error"> </span>        
-                    <br>
-                    <label for="password"><b>Password:</b></label>
-                    <input type="password" placeholder="Enter Password" id="password" name="password">
-                    <span class="error"></span>              
-                </fieldset>
-
-                <br>
-                <button type="submit">Log In <i class="fas fa-sign-in-alt"></i> </button>
-            </form>  
-
-            <p>Dont have an account?</p>
-            <a href="register.html">Create an Account</a>
-        </div>
-
-        <?php
+         <?php
         // check if the username has been set
         if(isset($_POST['username'])){
             $error = "";
@@ -92,7 +69,8 @@ $db = mysqli_connect($host, $user, $pass, $database, $port);
                     $error =  "Query Failed";
                     echo $error;
 
-                }else{          
+                }else{ 
+                    
                 }
                 // put results into an array 
                 $rows = mysqli_fetch_array($result);        
@@ -102,23 +80,53 @@ $db = mysqli_connect($host, $user, $pass, $database, $port);
                         // close mysql connection
                         mysqli_close($db);
                     }else{
-                        $error = "Invalid Password";
-                        echo $error;
+                        if(isset($_POST['password'])){
+                              $passErr = "Invalid Password";
+                        
+                        }
+                        else {
+                            $passErr="";
+                        }
+                      
                     }
                 }
                 else{
-                    $error = "Invalid Username";
-                    echo $error;
+                    $userErr = "Invalid Username";
+                   
                 }  
             } 
         }
 
         else{
-            $error = "Please enter a username";
-            echo $error;
+            $userErr = "Please enter a username";
+            
         }
 
         ?>
+
+        <div class="form">
+            <br>
+            <form class="login-form" onsubmit="validate(event)" method="post">
+                <fieldset>
+                    <legend>Log In to Schedule Service</legend>
+                    <label for="username"><b>Username:</b></label>
+                    <input type="text" placeholder="Enter Username" id="username" name="username">
+                    <span class ="error"><?php echo $userErr; ?></span>        
+                    <br>
+                    <label for="password"><b>Password:</b></label>
+                    <input type="password" placeholder="Enter Password" id="password" name="password">
+                    <span class="error"><?php echo $passErr; ?></span>              
+                </fieldset>
+
+                <br>
+                <button type="submit">Log In <i class="fas fa-sign-in-alt"></i> </button>
+            </form>  
+
+            <p>Dont have an account?</p>
+            <a href="register.php">Create an Account</a>
+        </div>
+
+       
 
         <div class="footer">
             <p id="disclaimer">This website was created for a student project at CSULB and is not meant for commerical use.</p>
