@@ -30,8 +30,6 @@
     max-width: 600px;
 }
 
-<<<<<<< HEAD
-=======
 /* Animation to make the images fade in from the bottom.  */
 .animate-bottom{
     position:relative;
@@ -44,7 +42,6 @@
     to {bottom:0;opacity:1}
 }
 
->>>>>>> master
 /* Display 2 images side by side on tablet screen size */
 @media only screen and (max-width: 850px) {
     .img-container{

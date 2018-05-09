@@ -4,26 +4,47 @@
  $vehicle = $detail = "";
  $orderValidated = false;
  $validForm = true;
+ $exterior = $interior = $headlights = "";
+ $orderCart = "";
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     
-    if (empty($_POST["vehicle"])) {
-    $vehicleErr = "Please select a vehicle type.";
+    if (!isset($_POST["vehicle"])) {
+        $vehicleErr = "Please select a vehicle type.";
         $validForm = false;
     } 
     else {
         $vehicle = test_input($_POST["vehicle"]);
+        echo $vehicle;
     }
     
-    if (empty($_POST["detail-package"])) {
-    $detailErr = "Please select a vehicle type.";
+    if ( (!isset($_POST["exterior"])) && (!isset($_POST["interior"])) && (!isset($_POST["headlights"]))) {
+        $detailErr = "Please select a detailing package.";
         $validForm = false;
     } 
     else {
-        $detail = test_input($_POST["detail-package"]);
+        //$detail = test_input($_POST["exterior"]);
+        if(isset($_POST["exterior"])){
+            $exterior = "\nExterior Detailing";
+            $orderCart = nl2br($orderCart.$exterior);
+        }
+        if(isset($_POST["interior"])){
+            $interior = "\nInterior Detailing";
+            $orderCart = nl2br($orderCart.$interior);
+        }
+        if(isset($_POST["headlights"])){
+            $headlights = "\nHeadlight Restoration";
+            $orderCart = nl2br($orderCart.$headlights);
+        }
     }
     $orderValidated = $validForm;
     
+    
+}
+
+function clearValues(){
+    $GLOBALS['vehicle'] = null;
+    $GLOBALS['orderCart'] = null;
 }
 
 function test_input($data) {
@@ -35,11 +56,14 @@ function test_input($data) {
 
  function outputOrder() {
       $orderNumber = mt_rand();
-      echo '<h2>Thank you for your order. Order #'.$orderNumber."</h2>";
-      echo '<p>'.date("m/d/Y") .'</p>';
-     // echo '<p>Customer Name: '.$GLOBALS['name'].'</p>';
-     // echo '<p>Customer Email: '.$GLOBALS['email'].'</p>';
-      echo '<p>Vehicle Type: '.$GLOBALS['vehicle'].'</p>';
+      echo '<h3>Thank you for your order. Order #'.$orderNumber."</h3>";
+      echo '<p>'.date("m/d/Y") . '</p>';
+      echo '<p>Vehicle Type: ' . $GLOBALS['vehicle'] . '</p>';
+      echo '<p>Selected Package: ' . $GLOBALS['orderCart'] . '</p>';
+//      echo '<p>'.$orderCart.'</p>';
+     clearValues();
+     
+     
 
 
   }
@@ -60,7 +84,7 @@ function test_input($data) {
     <link rel = "stylesheet" href = "./assets/style/order-body.css">
     <link rel = "stylesheet" href = "./assets/style/footer.css">
     <link rel = "icon" href = "https://pbs.twimg.com/profile_images/810848436715192324/LceZ56vC_400x400.jpg">
-    <script src="./assets/js/order.js"></script>
+    <script src="./assets/scripts/order.js"></script>
 
 
 </head>
@@ -86,7 +110,11 @@ function test_input($data) {
           <p><span class="error">* required field</span></p>
           <br>
           <div>
-              <?php  if($orderValidated) {outputOrder();}?>
+              <?php  
+                if($orderValidated) {
+                    outputOrder();
+                }
+              ?>
           </div>
           <br>
           <h2>Select vehicle type:<span class="error">* <?php echo $vehicleErr;?></span></h2>
@@ -94,7 +122,7 @@ function test_input($data) {
                 <div class="size">
                     <h3>Coupe</h3>
                     <img src="./assets/images/order/coupe.png" alt="coupe silhouette">
-                    <input id="coupe" class="vehicle-type" type="radio" name="vehicle" <?php if (isset($vehicle) && $vehicle=="coupe") echo "checked";?> value="coupe" >
+                    <input id="coupe" class="vehicle-type" type="radio" name="vehicle" <?php if (isset($vehicle) && $vehicle=="coupe") echo "checked";?> value="Coupe" >
                     +$0
                     
                 </div>
@@ -102,13 +130,13 @@ function test_input($data) {
                 <div class="size">
                     <h3>Sedan</h3>
                     <img src="./assets/images/order/sedan.png" alt="sedan silhouette">
-                    <input id="sedan" class="vehicle-type" type="radio" name="vehicle" <?php if (isset($vehicle) && $vehicle=="sedan") echo "checked";?>value="sedan" >+$10
+                    <input id="sedan" class="vehicle-type" type="radio" name="vehicle" <?php if (isset($vehicle) && $vehicle=="sedan") echo "checked";?>value="Sedan" >+$10
                 </div>
 
                 <div class="size">
                     <h3>SUV</h3>
                     <img src="./assets/images/order/suv.png" alt="suv silhouette">
-                    <input id="suv" class="vehicle-type" type="radio" name="vehicle" <?php if (isset($vehicle) && $vehicle=="suv") echo "checked";?>value="suv" >+$20
+                    <input id="suv" class="vehicle-type" type="radio" name="vehicle" <?php if (isset($vehicle) && $vehicle=="suv") echo "checked";?>value="SUV" >+$20
                 </div>
 
             </div>
@@ -126,7 +154,7 @@ function test_input($data) {
                             <li>Application of durable carnauba wax</li>
                             <li>Tires and trim treated with premium exterior dressing</li>
                         </ul>
-                        <input id="exterior" class="package" type="checkbox" name="detail-package" value="400">
+                        <input id="exterior" class="package" type="checkbox" name="exterior" value="400">
                     </div>
 
                     <div class = "category">
@@ -141,7 +169,7 @@ function test_input($data) {
                             <li>Navigation screen delicately wiped to provide streak free clarity</li>
                         </ul>
 
-                        <input id="interior" class="package" type="checkbox" name="detail-package" value="250" >
+                        <input id="interior" class="package" type="checkbox" name="interior" value="250" >
                     </div>
 
                     <div class="category">
@@ -155,7 +183,7 @@ function test_input($data) {
                             <li>Cermanic coating for increased clarity, shine, and UV resistance</li>
                             <li>Headlight scuff removal</li>
                         </ul>
-                        <input id="headlights" class="package" type="checkbox" name="detail-package" value="50">
+                        <input id="headlights" class="package" type="checkbox" name="headlights" value="50">
                     </div>
                 </div>
               <br>
@@ -164,6 +192,7 @@ function test_input($data) {
             
          
           <button id="submit" type="submit" value="Checkout"> Checkout   <i class="fas fa-shopping-cart"></i> </button>
+
       </form>
 
 
