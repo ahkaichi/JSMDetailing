@@ -98,7 +98,7 @@ $db = mysqli_connect($host, $user, $pass, $database, $port);
         }
 
         else{
-            $userErr = "Please enter a username";
+            $userErr = "";
             
         }
 
