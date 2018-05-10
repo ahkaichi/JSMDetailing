@@ -1,0 +1,103 @@
+#head {
+    text-align: center;
+}
+
+#order-confirm {
+  text-align: left;
+  margin: 3% 3% 0% 3%;
+}
+
+
+/* Product showcase styling */
+.order {
+    margin-bottom: 5%;
+    padding-top: 2%;
+    text-align: center;
+  
+}
+.list {
+    text-align: left;
+}
+.package {
+    height: 5%;
+    width: 5%;
+}
+.vehicle-type{
+    width: 90%;
+    margin: auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-bottom: 2%;
+}
+.category-list{
+  width: 90%;
+  margin: auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.category, .size{
+  width: 30%;
+  float: left;
+  text-align: center;
+  padding: 0% 1%;
+}
+
+.category img {
+  width: 100%;
+}
+
+.size img {
+    width: 75%;
+}
+
+.item, .service-heading {
+  font-weight: bold;
+}
+.order button {
+  font-family: "Roboto", sans-serif;
+  text-transform: uppercase;
+  outline: 0;
+  background: #353637;
+  width: 20%;
+  border: 0;
+  padding: 15px;
+  color: #FFFFFF;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.error {
+    color: #FF0000;
+}
+
+.order button:hover {
+  background: firebrick;
+}
+
+@media only screen and (max-width:850px) {
+    .size {
+        width: 50%;
+        margin-bottom: 5%;
+
+    }
+}
+/* 
+  Changes how the images will appear when tablet width is achieved.
+  Instead of 3 columns, display as 1 column
+*/
+@media only screen and (max-width: 850px) {
+  .category {
+    width: 90%;
+    margin-bottom: 10%;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .item, .category h3{
+    text-decoration: underline;
+  }
+}
+
