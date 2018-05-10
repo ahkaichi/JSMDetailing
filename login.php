@@ -1,6 +1,10 @@
 #!/usr/local/php5/bin/php-cgi
 
 <?php
+// Start the session
+session_start();
+
+
 // define variables for connecting to the database
 $host = "cecs-db01.coe.csulb.edu";
 $database ="cecs470o26";
@@ -69,9 +73,7 @@ $db = mysqli_connect($host, $user, $pass, $database, $port);
                     $error =  "Query Failed";
                     echo $error;
 
-                }else{ 
-                    
-                }
+                } else {}
                 // put results into an array 
                 $rows = mysqli_fetch_array($result);        
                 if($rows){
@@ -79,9 +81,16 @@ $db = mysqli_connect($host, $user, $pass, $database, $port);
                     if($rows['PASSWORD'] == $password){
                         // close mysql connection
                         mysqli_close($db);
+
+                        // Save the username that was entered as a session variable
+                        $_SESSION["username"] = $username;
+
+                        // Perform redirect to service order page
+                        header("Location: ./service.php");
+                        exit();
                     }else{
                         if(isset($_POST['password'])){
-                              $passErr = "Invalid Password";
+                              $passErr = "Invalid Credentials";
                         
                         }
                         else {
@@ -91,7 +100,7 @@ $db = mysqli_connect($host, $user, $pass, $database, $port);
                     }
                 }
                 else{
-                    $userErr = "Invalid Username";
+                    $passErr = "Invalid Credentials";
                    
                 }  
             } 
@@ -106,15 +115,14 @@ $db = mysqli_connect($host, $user, $pass, $database, $port);
 
         <div class="form">
             <br>
-            <form class="login-form" onsubmit="validate(event)" method="post" action="service.php">
+            <form class="login-form" onsubmit="validate(event)" method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
                 <fieldset>
                     <legend>Log In to Schedule Service</legend>
                     <label for="username"><b>Username:</b></label>
-                    <input type="text" placeholder="Enter Username" id="username" name="username">
-                    <span class ="error"><?php echo $userErr; ?></span>        
+                    <input type="text" placeholder="Enter Username" id="username" name="username" onfocus = "removeErrorHint(this)" value = "<?php echo $username; ?>">       
                     <br>
                     <label for="password"><b>Password:</b></label>
-                    <input type="password" placeholder="Enter Password" id="password" name="password">
+                    <input type="password" placeholder="Enter Password" id="password" onfocus = "removeErrorHint(this)" name="password">
                     <span class="error"><?php echo $passErr; ?></span>              
                 </fieldset>
 

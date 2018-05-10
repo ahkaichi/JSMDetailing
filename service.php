@@ -1,5 +1,16 @@
 #!/usr/local/php5/bin/php-cgi
 <?php
+ // Start the session
+ session_start();
+ $sessionUsername = $_SESSION["username"];
+ // If the username has not been set, redirect to the login page
+ if(strlen($sessionUsername) == 0 || !isset($sessionUsername)) {
+    // Perform redirect to login page
+    header("Location: ./login.php");
+    exit();
+ }
+
+
  $vehicleErr = $detailErr = "";
  $vehicle = $detail = "";
  $orderValidated = false;
