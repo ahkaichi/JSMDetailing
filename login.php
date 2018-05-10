@@ -1,6 +1,10 @@
 #!/usr/local/php5/bin/php-cgi
 
 <?php
+// Start the session
+session_start();
+
+
 // define variables for connecting to the database
 $host = "cecs-db01.coe.csulb.edu";
 $database ="cecs470o26";
@@ -77,6 +81,9 @@ $db = mysqli_connect($host, $user, $pass, $database, $port);
                     if($rows['PASSWORD'] == $password){
                         // close mysql connection
                         mysqli_close($db);
+
+                        // Save the username that was entered as a session variable
+                        $_SESSION["username"] = $username;
 
                         // Perform redirect to service order page
                         header("Location: ./service.php");
