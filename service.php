@@ -41,17 +41,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         if(isset($_POST["exterior"])){
             $exterior = "\nExterior Detailing";
             $price = $price + (int)$_POST["exterior"];
-            $orderCart = nl2br($orderCart.$exterior);
+            $orderCart = $orderCart.$exterior;
         }
         if(isset($_POST["interior"])){
             $interior = "\nInterior Detailing";
             $price = $price + (int)$_POST["interior"];
-            $orderCart = nl2br($orderCart.$interior);
+            $orderCart = $orderCart.$interior;
         }
         if(isset($_POST["headlights"])){
             $headlights = "\nHeadlight Restoration";
             $price = $price + (int)$_POST["headlights"];
-            $orderCart = nl2br($orderCart.$headlights);
+            $orderCart = $orderCart.$headlights;
         }
     }
     $orderValidated = $validForm;
@@ -76,9 +76,9 @@ function test_input($data) {
       $orderNumber = mt_rand();
       echo '<h3>Thank you for your order. Order #'.$orderNumber."</h3>";
       echo '<p>'.date("m/d/Y") . '</p>';
-      echo '<p>Vehicle Type: ' . $GLOBALS['vehicle'] . '</p>';
-      echo '<p>Selected Package: ' . $GLOBALS['orderCart'] . '</p>';
-     echo '<p>Price: $' . $GLOBALS['price'] . '</p>';
+      echo '<p> <b>Vehicle Type: </b>' . $GLOBALS['vehicle'] . '</p>';
+      echo '<p> <b>Selected Package:</b> ' . nl2br($GLOBALS['orderCart']) . '</p>';
+     echo '<p> <b>Price:</b> $' . $GLOBALS['price'] . '</p>';
 //      echo '<p>'.$orderCart.'</p>';
      clearValues();
      
@@ -123,18 +123,19 @@ function test_input($data) {
 
    </div>
   </header>
-
-      <form method="post" class="order" onsubmit="required(event)" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" >
-          <h1 id="head">Order Service</h1>
-          <p><span class="error">* required field</span></p>
-          <br>
-          <div>
+    
+        <div id="orderConfirm">
               <?php  
                 if($orderValidated) {
                     outputOrder();
                 }
               ?>
           </div>
+
+      <form method="post" class="order" onsubmit="required(event)" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" >
+          <h1 id="head">Order Service</h1>
+          <p><span class="error">* required field</span></p>
+          <br>
           <br>
           <h2>Select vehicle type:<span class="error">* <?php echo $vehicleErr;?></span></h2>
           <div class="vehicle-type">
