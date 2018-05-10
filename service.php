@@ -16,8 +16,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     } 
     else {
         $vehicle = test_input($_POST["vehicle"]);
-        echo $vehicle;
-        
                 
             if( $vehicle == 'Sedan')  { 
                 $price = $price + 10;
@@ -75,11 +73,11 @@ function test_input($data) {
  function outputOrder() {
       $orderNumber = mt_rand();
       echo '<h3>Thank you for your order. Order #'.$orderNumber."</h3>";
+      echo '<h3>Print this receipt and take it to the shop within a week to get your vehicle serviced </h3>';
       echo '<p>'.date("m/d/Y") . '</p>';
       echo '<p>Vehicle Type: ' . $GLOBALS['vehicle'] . '</p>';
       echo '<p>Selected Package: ' . $GLOBALS['orderCart'] . '</p>';
      echo '<p>Price: $' . $GLOBALS['price'] . '</p>';
-//      echo '<p>'.$orderCart.'</p>';
      clearValues();
      
      
@@ -124,17 +122,19 @@ function test_input($data) {
    </div>
   </header>
 
+        <div id = "order-confirm">
+          <?php  
+            if($orderValidated) {
+              outputOrder();
+            }
+          ?>
+          </div>
+
+
       <form method="post" class="order" onsubmit="required(event)" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" >
           <h1 id="head">Order Service</h1>
           <p><span class="error">* required field</span></p>
           <br>
-          <div>
-              <?php  
-                if($orderValidated) {
-                    outputOrder();
-                }
-              ?>
-          </div>
           <br>
           <h2>Select vehicle type:<span class="error">* <?php echo $vehicleErr;?></span></h2>
           <div class="vehicle-type">
