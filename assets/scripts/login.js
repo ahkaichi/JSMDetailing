@@ -11,7 +11,7 @@ var flag = true
 if(username.length == 0 || username == null){
 
    
-    alert("Please enter your username");
+    alert("Enter a username to proceed");
      user.classList.add("error");
     flag = false;
    
