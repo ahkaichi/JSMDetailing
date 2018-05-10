@@ -76,7 +76,7 @@ function test_input($data) {
       echo '<h3>Print this receipt and take it to the shop within a week to get your vehicle serviced </h3>';
       echo '<p> <b>Date: </b>'.date("m/d/Y") . '</p>';
       echo '<p> <b>Vehicle Type: </b>' . $GLOBALS['vehicle'] . '</p>';
-      echo '<p> <b>Selected Package: </b>' . $GLOBALS['orderCart'] . '</p>';
+      echo '<p> <b>Selected Package: </b>' . nl2br($GLOBALS['orderCart']) . '</p>';
       echo '<p> <b> Price: $ </b>' . $GLOBALS['price'] . '</p>';
 
      clearValues();
