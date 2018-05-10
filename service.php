@@ -229,6 +229,7 @@ function test_input($data) {
   <div class="footer">
     <p id="disclaimer">This website was created for a student project at CSULB and is not meant for commerical use.</p>
     <p>Created by - Felix Huang, Andrew Kaichi, Raymond Chin, Jordan Lever. CSULB CECS 470 Spring 2018</p>
+    <p>  <?php echo "Last modified: " . date ("F d Y H:i:s.", getlastmod());?></p>
   </div>
   
 
