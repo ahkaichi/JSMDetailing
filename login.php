@@ -42,7 +42,7 @@ $db = mysqli_connect($host, $user, $pass, $database, $port);
         <header>
             <div class="header-container">
                 <div class="branding">
-                    <h1>  <a href = "login.php"> <i class="fab fa-pushed"></i>JSM Detailing </a> </h1>
+                    <h1>  <a href = "index.html"> <i class="fab fa-pushed"></i>JSM Detailing </a> </h1>
                 </div>
 
                 <div class="topnav">
