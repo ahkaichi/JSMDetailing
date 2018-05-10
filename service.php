@@ -73,7 +73,7 @@ function test_input($data) {
  function outputOrder() {
       $orderNumber = mt_rand();
       echo '<h3>Thank you for your order. Order #'.$orderNumber."</h3>";
-      echo '<h3>Print this receipt and take it to the shop within a week to get your vehicle serviced </h3>';
+      echo '<h3>Print or show this receipt and take it to the shop within a week to get your vehicle serviced </h3>';
       echo '<p> <b>Date: </b>'.date("m/d/Y") . '</p>';
       echo '<p> <b>Vehicle Type: </b>' . $GLOBALS['vehicle'] . '</p>';
       echo '<p> <b>Selected Package: </b>' . nl2br($GLOBALS['orderCart']) . '</p>';
@@ -123,14 +123,13 @@ function test_input($data) {
    </div>
   </header>
 
-    
-        <div id="orderConfirm">
-              <?php  
-                if($orderValidated) {
-                    outputOrder();
-                }
-              ?>
-          </div>
+       <div id="order-confirm">
+          <?php  
+            if($orderValidated) {
+              outputOrder();
+            }
+          ?>
+        </div>
 
       <form method="post" class="order" onsubmit="required(event)" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" >
           <h1 id="head">Order Service</h1>
