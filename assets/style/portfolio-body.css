@@ -70,7 +70,7 @@
     text-align: center;
 }
 
-.insta a {
+.insta a:hover {
     color: red;
 }
 
