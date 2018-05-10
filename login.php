@@ -112,10 +112,10 @@ $db = mysqli_connect($host, $user, $pass, $database, $port);
                 <fieldset>
                     <legend>Log In to Schedule Service</legend>
                     <label for="username"><b>Username:</b></label>
-                    <input type="text" placeholder="Enter Username" id="username" name="username" value = "<?php echo $username; ?>">       
+                    <input type="text" placeholder="Enter Username" id="username" name="username" onfocus = "removeErrorHint(this)" value = "<?php echo $username; ?>">       
                     <br>
                     <label for="password"><b>Password:</b></label>
-                    <input type="password" placeholder="Enter Password" id="password" name="password">
+                    <input type="password" placeholder="Enter Password" id="password" onfocus = "removeErrorHint(this)" name="password">
                     <span class="error"><?php echo $passErr; ?></span>              
                 </fieldset>
 

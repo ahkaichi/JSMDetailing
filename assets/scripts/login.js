@@ -30,3 +30,8 @@ else if(password.length == 0 || password == null){
     
 
 }
+
+// Remove the error class from a single form element
+function removeErrorHint(element) {
+  element.classList.remove("error")
+}
