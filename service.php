@@ -16,8 +16,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     } 
     else {
         $vehicle = test_input($_POST["vehicle"]);
-        echo $vehicle;
-        
                 
             if( $vehicle == 'Sedan')  { 
                 $price = $price + 10;
@@ -75,11 +73,12 @@ function test_input($data) {
  function outputOrder() {
       $orderNumber = mt_rand();
       echo '<h3>Thank you for your order. Order #'.$orderNumber."</h3>";
-      echo '<p>'.date("m/d/Y") . '</p>';
+      echo '<h3>Print this receipt and take it to the shop within a week to get your vehicle serviced </h3>';
+      echo '<p> <b>Date: </b>'.date("m/d/Y") . '</p>';
       echo '<p> <b>Vehicle Type: </b>' . $GLOBALS['vehicle'] . '</p>';
-      echo '<p> <b>Selected Package:</b> ' . nl2br($GLOBALS['orderCart']) . '</p>';
-     echo '<p> <b>Price:</b> $' . $GLOBALS['price'] . '</p>';
-//      echo '<p>'.$orderCart.'</p>';
+      echo '<p> <b>Selected Package: </b>' . $GLOBALS['orderCart'] . '</p>';
+      echo '<p> <b> Price: $ </b>' . $GLOBALS['price'] . '</p>';
+
      clearValues();
      
      
@@ -123,6 +122,7 @@ function test_input($data) {
 
    </div>
   </header>
+
     
         <div id="orderConfirm">
               <?php  
