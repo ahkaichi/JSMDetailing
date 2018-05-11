@@ -1,4 +1,33 @@
 #!/usr/local/php5/bin/php-cgi
+
+
+<?php
+
+
+
+//change email to address
+//move css to external
+//move javascript to external
+
+
+
+
+
+
+// define variables for connecting to the database
+$host = "cecs-db01.coe.csulb.edu";
+$database ="cecs470o26";
+$user = "cecs470o26";
+$pass = "oo7emo";
+$port = "3306";
+$err = "";
+$userErr = "";
+$passErr ="";
+$username = $_POST['username'];
+$password = $_POST['password'];
+// connect to the MYSQL database
+$db = mysqli_connect($host, $user, $pass, $database, $port);
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -11,59 +40,28 @@
     <link rel = "stylesheet" href = "./assets/style/global.css">
     <link rel = "stylesheet" href = "./assets/style/header.css">
     <link rel = "stylesheet" href = "./assets/style/banner.css">
-    <link rel = "stylesheet" href = "./assets/style/homepage-body.css">
     <link rel = "stylesheet" href = "./assets/style/footer.css">
+	<link rel = "stylesheet" href = "./assets/style/registration.css">
+	
     <link rel = "icon" href = "https://pbs.twimg.com/profile_images/810848436715192324/LceZ56vC_400x400.jpg">
-	<style>
-	.jerror{
-	background: #FFCDD2;
-}
-
+	<link rel = "stylesheet" href = "./assets/style/login.css">
 	
-	</style>
-	
-	<script>
-	function validate(){
+	 <script src="./assets/scripts/registration.js"></script>
 	
 	
-		
-		var inputs = document.getElementsByClassName('required')
-		var submit = true;
-	//console.log(inputs); helps you see what it actually is and call the correct one.
-	for(var i = 0; i <inputs.length;i++)
-	{
-		
-		if(inputs[i].value=="")
-		{
-			inputs[i].classList.add("jerror");
-			
-			var submit = false;
-		}
-
-		if(inputs[i].value!="" && inputs[i].classList.contains("jerror"))
-		{
-			inputs[i].classList.remove("jerror");
-			
-		}
-		
-	}
-	if(!submit){
-		alert("Please Fill All Required Fields");
-		return false;
-	}
-	}
-	function success(){
-	alert("Thank You! You have successfuly completed the form! Have a nice day!.");
-	}
 	
-	</script>
+	
 
 </head>
 <body>
 <?php
-$nameError = $emailError = $lnameError = $usernameError = $passwordError = $confirmError =  "";
-$name = $email = $lname = $username = $password = $confirm = "";
-$nameFlag = $emailFlag = $lnameFlag = $usernameFlag = $passwordFlag = 1;
+
+
+?>
+<?php
+$nameError = $addressError = $lnameError = $usernameError = $passwordError = $confirmError =  "";
+$name = $address = $lname = $username = $password = $confirm = "";
+$nameFlag = $addFlag = $lnameFlag = $usernameFlag = $passwordFlag = 1;
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
  //So this for name it will check for if its empty or if there is an error with format
@@ -75,6 +73,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $nameFlag = 1;
     if (!preg_match("/^[a-zA-Z ]*$/",$name)) {
       $nameError = "Invalid Characters. Only letters and white space allowed";
+	  $nameFlag = 0 ;
     }
   }
    if (empty($_POST["lname"])) {
@@ -85,6 +84,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $lnameFlag = 1;
     if (!preg_match("/^[a-zA-Z ]*$/",$lname)) {
       $lnameError = "Invalid Characters. Only letters and white space allowed";
+	  $lnameFlag=0;
     }
   }
    if (empty($_POST["username"])) {
@@ -92,10 +92,18 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 	$usernameFlag = 0;
   } else {
     $username = test_input($_POST["username"]);
+	
     $usernameFlag = 1;
+	$query = "SELECT USERNAME FROM Client where USERNAME = '$username'";
+    $result = mysqli_query($db,$query);
+	if (mysqli_num_rows($result)> 0){
+	
+		$usernameError = "Username already exists please choose another";
+		$usernameFlag = 0;
+	}
   }
   //This checks for if the email is empty
-if (empty($_POST["email"])) {
+/*if (empty($_POST["email"])) {
 	$emailError = "Email is required";
 	$emailFlag = 0;
 } else {
@@ -105,7 +113,14 @@ if (empty($_POST["email"])) {
   if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
     $emailError = "Invalid email format";
    }
-}
+}*/
+if (empty($_POST["address"])) {
+    $addressError = "Address is required";
+	$addFlag = 0;
+  } else {
+    $address = test_input($_POST["address"]);
+	$addFlag = 1;
+  }
 
  if (empty($_POST["password"])) {
     $passwordError = "Password is required";
@@ -127,13 +142,16 @@ if (empty($_POST["email"])) {
     $passwordFlag = 1;
     if ($password !== $confirm) {
       $passwordError = "Passwords do not match";
+	  $passwordFlag = 0;
     }
   }
   
 //$nameFlag = $emailFlag = $lnameFlag = $usernameFlag = $passwordFlag = 1;
 if($nameFlag && $emailFlag && $lnameFlag && $usernameFlag && $passwordFlag){
 	echo'<script>success()</script>';
-	
+	echo "Thank You for Registering! Have a Nice Day!";
+	$sql = "INSERT INTO Client(USERNAME,FIRSTNAME,LASTNAME,PASSWORD,ADDRESS) VALUES ('$username','$name','$lname','$password','$email')";
+	$result = mysqli_query($db,$sql);
 }
 
 
@@ -166,25 +184,25 @@ function test_input($data) {
   </header>
   
   <div class="form">
-	<form id ="mainForm" onsubmit = "return validate()" action = ""<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>"" onreset = "resetHandler()" method = "post">
+	<form id ="registration-form" onsubmit = "return validate()" action = ""<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>"" onreset = "resetHandler()" method = "post">
 	<fieldset>
 		<legend>Registration</legend>
-			<label for="name"> First Name: </label><input type = "text" name="name" class = "required" id ="name" value = "<?php echo $name;?>">
+			<label for="name"><b> First Name: </label><input type = "text" placeholder = "Enter First Name" max = 20 name="name" class = "required" id ="name" value = "<?php echo $name;?>">
 			<span class = "error"><?php echo $nameError;?></span><br>
 			
-			<label for = "lname"> Last Name: </label><input type = "text" name = "lname" class = "required" id = "lname" value = "<?php echo $lname;?>">
+			<label for = "lname"><b> Last Name: </label><input type = "text" max = 20 placeholder = "Enter Last Name" name = "lname" class = "required" id = "lname" value = "<?php echo $lname;?>">
 			<span class = "error"><?php echo $lnameError;?></span><br>
 			
-			<label for = "username"> Username: </label><input type = "text" name ="username" class = "required" id = "username" value = "<?php echo $username;?>">
+			<label for = "username"><b> Username: </label><input type = "text" max = 30 placeholder = "Create Username" name ="username" class = "required" id = "username" value = "<?php echo $username;?>">
 			<span class = "error"><?php echo $usernameError;?></span><br>
 			
-			<label for="email"> Email: </label><input type = "text" name = "email" class = "required" id = "email" value = "<?php echo $email;?>">
-			<span class = "error"><?php echo $emailError;?></span><br>
+			<label for="address"><b> Address: </label><input type = "text" name = "address" max = 40 placeholder = "Enter Address" class = "required" id = "address" value = "<?php echo $address;?>">
+			<span class = "error"><?php echo $addressError;?></span><br>
 			
-			<label for="password"> Password: </label><input type = "password" name = "password" class = "required" id = "password" value = "<?php echo $password;?>">
+			<label for="password"><b> Password: </label><input type = "password" max = 20 placeholder = "Create Password" name = "password" class = "required" id = "password" value = "<?php echo $password;?>">
 			<span class = "error"><?php echo $passwordError;?></span><br>
 			
-			<label for = "confirm"> Confirm Password: </label><input type = "password" class = "required" name = "confirm" id = "confirm">
+			<label for = "confirm"><b> Confirm Password: </label><input type = "password" placeholder = "Re-enter Password" max = 20 class = "required" name = "confirm" id = "confirm">
 			<span class = "error"><?php echo $confirmError;?></span><br>
 			
 			
@@ -192,19 +210,14 @@ function test_input($data) {
 			
 			
 	</fieldset>
+	</br></br>
 	<button type = "submit" value = "Submit">Submit</button>
 		<button type = "reset" value = "Reset form">Reset</button>
 	</form>
   
   
   
-  </br>
-  </br>
-  </br>
-  </br>
-  </br>
-  </br>
-  </br>
+ 
   
   
   </div>
