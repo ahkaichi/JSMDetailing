@@ -1,0 +1,18 @@
+/* 
+jerror is for the javascript (client side) validation. When an error occurs the 
+fields with the error will highlighted.
+
+*/
+.jerror{
+	
+	background: #FFCDD2;
+}
+/*
+this for the style of the thank you for registering page. It will center the image.
+It also makes the image responsive
+*/
+div.thank { height: 100px; line-height: 100px;text-align:center; margin-top: 5%; }
+  div.thank img { vertical-align:middle; max-width: 100%; height: auto;}
+
+ 
+	
