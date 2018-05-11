@@ -171,7 +171,7 @@ $db = mysqli_connect($host, $user, $pass, $database, $port);
 			<label for = "lname"><b> Last Name: </label><input type = "text" max = 20 placeholder = "Enter Last Name" name = "lname" class = "required" id = "lname"  onfocus = "removeErrorHint(this)" value = "<?php echo $lname;?>">
       <span class = "error"><?php echo $lnameError;?></span><br>
       
-      <label for="email"><b> Email: </label><input type = "text" name = "email" max = 40 placeholder = "Enter Email" class = "required" id = "email" onfocus = "removeErrorHint(this)" value = "<?php echo $email;?>">
+      <label for="email"><b> Email: </label><input type = "email"  name = "email" max = 40 placeholder = "Enter Email" class = "required" id = "email" onfocus = "removeErrorHint(this)" value = "<?php echo $email;?>">
 			<span class = "error"><?php echo $emailError;?></span><br>
 			
 			<label for = "username"><b> Username: </label><input type = "text" max = 30 placeholder = "Create Username" name ="username" class = "required" id = "username"  onfocus = "removeErrorHint(this)" value = "<?php echo $username;?>">
