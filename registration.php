@@ -42,7 +42,7 @@ $db = mysqli_connect($host, $user, $pass, $database, $port);
 	<link rel = "stylesheet" href = "./assets/style/registration.css">
 	
     <link rel = "icon" href = "https://pbs.twimg.com/profile_images/810848436715192324/LceZ56vC_400x400.jpg">
-	<link rel = "stylesheet" href = "./assets/style/login.css">
+	
 	
 	 <script src="./assets/scripts/registration.js"></script>
 	
