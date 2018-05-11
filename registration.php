@@ -3,15 +3,6 @@
 
 <?php
 
-
-
-
-
-
-
-
-
-
 // define variables for connecting to the database
 $host = "cecs-db01.coe.csulb.edu";
 $database ="cecs470o26";
@@ -42,137 +33,116 @@ $db = mysqli_connect($host, $user, $pass, $database, $port);
 	<link rel = "stylesheet" href = "./assets/style/registration.css">
 	
     <link rel = "icon" href = "https://pbs.twimg.com/profile_images/810848436715192324/LceZ56vC_400x400.jpg">
+	<script src="./assets/scripts/registration.js"></script>
 	
-	
-	 <script src="./assets/scripts/registration.js"></script>
-	
-	
-	
-	
-
 </head>
 <body>
+
 <?php
+    //validation server side
+    $nameError = $emailError = $lnameError = $usernameError = $passwordError = $confirmError =  "";
+    $name = $email = $lname = $username = $password = $confirm = "";
+    $nameFlag = $addFlag = $lnameFlag = $usernameFlag = $passwordFlag = 1;
 
-
-?>
-<?php
-//validation server side
-$nameError = $emailError = $lnameError = $usernameError = $passwordError = $confirmError =  "";
-$name = $email = $lname = $username = $password = $confirm = "";
-$nameFlag = $addFlag = $lnameFlag = $usernameFlag = $passwordFlag = 1;
-
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
- //So this for name it will check for if its empty or if there is an error with format
-  if (empty($_POST["name"])) {
-    $nameError = "First name is required";
-	$nameFlag = 0;
-  } else {
-    $name = test_input($_POST["name"]);
-    $nameFlag = 1;
-    if (!preg_match("/^[a-zA-Z ]*$/",$name)) {
-      $nameError = "Invalid Characters. Only letters and white space allowed";
-	  $nameFlag = 0 ;
+    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+       //So this for name it will check for if its empty or if there is an error with format
+      if (empty($_POST["name"])) {
+        $nameError = "First name is required";
+        $nameFlag = 0;
+      } else {
+        $name = test_input($_POST["name"]);
+        $nameFlag = 1;
+        if (!preg_match("/^[a-zA-Z ]*$/",$name)) {
+        $nameError = "Invalid Characters. Only letters and white space allowed";
+        $nameFlag = 0 ;
+        }
+      }
+      //This validates the last name
+      if (empty($_POST["lname"])) {
+        $lnameError = "Last name is required";
+        $lnameFlag = 0;
+      } else {
+        $lname = test_input($_POST["lname"]);
+        $lnameFlag = 1;
+        if (!preg_match("/^[a-zA-Z ]*$/",$lname)) {
+        $lnameError = "Invalid Characters. Only letters and white space allowed";
+        $lnameFlag=0;
+        }
+      }
+      //validates user name
+      if (empty($_POST["username"])) {
+        $usernameError = "Username is required";
+        $usernameFlag = 0;
+      } else {
+        $username = test_input($_POST["username"]);
+        
+        $usernameFlag = 1;
+        $query = "SELECT USERNAME FROM Client where USERNAME = '$username'";
+        $result = mysqli_query($db,$query);
+        if (mysqli_num_rows($result)> 0){
+        
+            $usernameError = "Username already exists please choose another";
+            $usernameFlag = 0;
+        }
+      }
+      //This checks for if the email is empty
+      if (empty($_POST["email"])) {
+        $emailError = "Email is required";
+        $emailFlag = 0;
+      } else {
+      $email = test_input($_POST["email"]);
+      $emailFlag =1;
+      //this checks for format
+      if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+        $emailError = "Invalid email format must include @ & .com";
+        $emailFlag = 0;
+      }
     }
-  }
-  //This validates the last name
-   if (empty($_POST["lname"])) {
-    $lnameError = "Last name is required";
-	$lnameFlag = 0;
-  } else {
-    $lname = test_input($_POST["lname"]);
-    $lnameFlag = 1;
-    if (!preg_match("/^[a-zA-Z ]*$/",$lname)) {
-      $lnameError = "Invalid Characters. Only letters and white space allowed";
-	  $lnameFlag=0;
+
+    //validates password
+    if (empty($_POST["password"])) {
+        $passwordError = "Password is required";
+        $passwordFlag = 0;
+    }else {
+        $password = test_input($_POST["password"]);
+        $passwordFlag = 1;
+        /*if (!preg_match("^.*(?=.{8,})(?=.*[a-zA-Z])(?=.*\d)(?=.*[!#$%&?]).*$",$password)) {
+        $passwordError = "Password must contain at least 8 characters, 1 number, and 1 special character";
+        }*/
     }
-  }
-  //validates user name
-   if (empty($_POST["username"])) {
-    $usernameError = "Username is required";
-	$usernameFlag = 0;
-  } else {
-    $username = test_input($_POST["username"]);
-	
-    $usernameFlag = 1;
-	$query = "SELECT USERNAME FROM Client where USERNAME = '$username'";
-    $result = mysqli_query($db,$query);
-	if (mysqli_num_rows($result)> 0){
-	
-		$usernameError = "Username already exists please choose another";
-		$usernameFlag = 0;
-	}
-  }
-  //This checks for if the email is empty
-if (empty($_POST["email"])) {
-	$emailError = "Email is required";
-	$emailFlag = 0;
-} else {
-  $email = test_input($_POST["email"]);
-  $emailFlag =1;
-  //this checks for format
-  if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-    $emailError = "Invalid email format must include @ & .com";
-	$emailFlag = 0;
-   }
-}
-/*
-if (empty($_POST["address"])) {
-    $addressError = "Address is required";
-	$addFlag = 0;
-  } else {
-    $address = test_input($_POST["address"]);
-	$addFlag = 1;
-  }
-  */
-//validates password
- if (empty($_POST["password"])) {
-    $passwordError = "Password is required";
-	$passwordFlag = 0;
-  }else {
-    $password = test_input($_POST["password"]);
-    $passwordFlag = 1;
-    /*if (!preg_match("^.*(?=.{8,})(?=.*[a-zA-Z])(?=.*\d)(?=.*[!#$%&?]).*$",$password)) {
-      $passwordError = "Password must contain at least 8 characters, 1 number, and 1 special character";
-    }*/
-  }
-  
- //validates that the confirm password
-    if (empty($_POST["confirm"])) {
-    $confirmError = "Must confirm password";
-	$passwordFlag = 0;
-  }else {
-	  // checks to make sure password and confirmation match
-    $confirm = test_input($_POST["confirm"]);
-    $passwordFlag = 1;
-    if ($password !== $confirm) {
-      $passwordError = "Passwords do not match";
-	  $passwordFlag = 0;
+    
+    //validates that the confirm password
+        if (empty($_POST["confirm"])) {
+        $confirmError = "Must confirm password";
+        $passwordFlag = 0;
+    }else {
+        // checks to make sure password and confirmation match
+        $confirm = test_input($_POST["confirm"]);
+        $passwordFlag = 1;
+        if ($password !== $confirm) {
+        $passwordError = "Passwords do not match";
+        $passwordFlag = 0;
+        }
     }
+    
+    //$nameFlag = $emailFlag = $lnameFlag = $usernameFlag = $passwordFlag = 1;
+    if($nameFlag && $emailFlag && $lnameFlag && $usernameFlag && $passwordFlag){
+
+        $sql = "INSERT INTO Client(USERNAME,FIRSTNAME,LASTNAME,PASSWORD,ADDRESS) VALUES ('$username','$name','$lname','$password','$email')";
+        $result = mysqli_query($db,$sql);
+        
+        header('Location: thank-you.html');
+        exit();
+    }
+
   }
-  
-//$nameFlag = $emailFlag = $lnameFlag = $usernameFlag = $passwordFlag = 1;
-if($nameFlag && $emailFlag && $lnameFlag && $usernameFlag && $passwordFlag){
-	//echo'<script>success()</script>';
-	//echo "Thank You for Registering! Have a Nice Day!";
-	$sql = "INSERT INTO Client(USERNAME,FIRSTNAME,LASTNAME,PASSWORD,ADDRESS) VALUES ('$username','$name','$lname','$password','$email')";
-	$result = mysqli_query($db,$sql);
-	
-	header('Location: thank-you.html');
-	exit();
-}
 
-
-
-}
-
-function test_input($data) {
-  $data = trim($data);
-  $data = stripslashes($data);
-  $data = htmlspecialchars($data);
-  return $data;
-}
-
+    function test_input($data) {
+      $data = trim($data);
+      $data = stripslashes($data);
+      $data = htmlspecialchars($data);
+      return $data;
+    }
 
 ?>
   <header>
@@ -193,7 +163,7 @@ function test_input($data) {
   
   <div class="form">
 	<form id ="registration-form" onsubmit = "return validate()" action = ""<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>"" onreset = "resetHandler()" method = "post">
-	<fieldset>
+	  <fieldset>
 		<legend>Registration</legend>
 			<label for="name"><b> First Name: </label><input type = "text" placeholder = "Enter First Name" max = 20 name="name" class = "required" id ="name" value = "<?php echo $name;?>">
 			<span class = "error"><?php echo $nameError;?></span><br>
@@ -213,29 +183,20 @@ function test_input($data) {
 			<label for = "confirm"><b> Confirm Password: </label><input type = "password" placeholder = "Re-enter Password" max = 20 class = "required" name = "confirm" id = "confirm">
 			<span class = "error"><?php echo $confirmError;?></span><br>
 			
-			
-			
-			
-			
-	</fieldset>
-	</br></br>
-	<button type = "submit" value = "Submit">Submit</button>
-		<button type = "reset" onclick = "location.href='registration.php';"; value = "Reset form">Reset</button>
+      </fieldset>
+    
+	  </br></br>
+	  <button type = "submit" value = "Submit">Submit</button>
+	  <button type = "reset" onclick = "location.href='registration.php';"; value = "Reset form">Reset</button>
 	</form>
-  
-  
-  
- 
-  
   
   </div>
 
- 
 
- 
    <div class="footer">
     <p id="disclaimer">This website was created for a student project at CSULB and is not meant for commerical use.</p>
     <p>Created by - Felix Huang, Andrew Kaichi, Raymond Chin, Jordan Lever. CSULB CECS 470 Spring 2018</p>
+    <p>  <?php echo "Last modified: " . date ("F d Y H:i:s.", getlastmod());?></p>
   </div>
   
 
