@@ -25,9 +25,8 @@ function validate(e){
 	}
 
 
-	//if one of the fields is empty we should cancel the submit and alert the user.
+	// If there was an error, do not submit the form
 	if(!submit){
-		alert("Please Fill All Required Fields");
 		e.preventDefault();
 		
 	}
