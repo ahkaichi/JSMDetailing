@@ -162,25 +162,25 @@ $db = mysqli_connect($host, $user, $pass, $database, $port);
   </header>
   
   <div class="form">
-	<form id ="registration-form" onsubmit = "return validate()" action = ""<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>"" onreset = "resetHandler()" method = "post">
+	<form id ="registration-form" onsubmit = "validate(event)" action = "<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" onreset = "resetHandler()" method = "post">
 	  <fieldset>
 		<legend>Registration</legend>
-			<label for="name"><b> First Name: </label><input type = "text" placeholder = "Enter First Name" max = 20 name="name" class = "required" id ="name" value = "<?php echo $name;?>">
+			<label for="name"><b> First Name: </label><input type = "text" placeholder = "Enter First Name" max = 20 name="name" class = "required" id ="name" onfocus = "removeErrorHint(this)" value = "<?php echo $name;?>">
 			<span class = "error"><?php echo $nameError;?></span><br>
 			
-			<label for = "lname"><b> Last Name: </label><input type = "text" max = 20 placeholder = "Enter Last Name" name = "lname" class = "required" id = "lname" value = "<?php echo $lname;?>">
-			<span class = "error"><?php echo $lnameError;?></span><br>
-			
-			<label for = "username"><b> Username: </label><input type = "text" max = 30 placeholder = "Create Username" name ="username" class = "required" id = "username" value = "<?php echo $username;?>">
-			<span class = "error"><?php echo $usernameError;?></span><br>
-			
-			<label for="email"><b> Email: </label><input type = "text" name = "email" max = 40 placeholder = "Enter Email" class = "required" id = "email" value = "<?php echo $email;?>">
+			<label for = "lname"><b> Last Name: </label><input type = "text" max = 20 placeholder = "Enter Last Name" name = "lname" class = "required" id = "lname"  onfocus = "removeErrorHint(this)" value = "<?php echo $lname;?>">
+      <span class = "error"><?php echo $lnameError;?></span><br>
+      
+      <label for="email"><b> Email: </label><input type = "text" name = "email" max = 40 placeholder = "Enter Email" class = "required" id = "email" onfocus = "removeErrorHint(this)" value = "<?php echo $email;?>">
 			<span class = "error"><?php echo $emailError;?></span><br>
 			
-			<label for="password"><b> Password: </label><input type = "password" max = 20 placeholder = "Create Password" name = "password" class = "required" id = "password" value = "<?php echo $password;?>">
+			<label for = "username"><b> Username: </label><input type = "text" max = 30 placeholder = "Create Username" name ="username" class = "required" id = "username"  onfocus = "removeErrorHint(this)" value = "<?php echo $username;?>">
+			<span class = "error"><?php echo $usernameError;?></span><br>
+			
+			<label for="password"><b> Password: </label><input type = "password" max = 20 placeholder = "Create Password" name = "password" class = "required" id = "password" onfocus = "removeErrorHint(this)" value = "<?php echo $password;?>">
 			<span class = "error"><?php echo $passwordError;?></span><br>
 			
-			<label for = "confirm"><b> Confirm Password: </label><input type = "password" placeholder = "Re-enter Password" max = 20 class = "required" name = "confirm" id = "confirm">
+			<label for = "confirm"><b> Confirm Password: </label><input type = "password" placeholder = "Re-enter Password" max = 20 class = "required" name = "confirm" onfocus = "removeErrorHint(this)" id = "confirm">
 			<span class = "error"><?php echo $confirmError;?></span><br>
 			
       </fieldset>
