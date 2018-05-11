@@ -127,7 +127,7 @@ function test_input($data) {
        <div class="topnav">
         <a href="index.html">Home</a>
         <a href="portfolio.html">Portfolio</a>
-        <a href="#sign">Registration</a>
+        <a href="registration.php">Registration</a>
         <a href="service.php" class="current">Schedule Service</a>
       </div>
 
