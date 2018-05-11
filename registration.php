@@ -4,6 +4,14 @@
 <?php
 
 
+
+
+
+
+
+
+
+
 // define variables for connecting to the database
 $host = "cecs-db01.coe.csulb.edu";
 $database ="cecs470o26";
@@ -31,7 +39,7 @@ $db = mysqli_connect($host, $user, $pass, $database, $port);
     <link rel = "stylesheet" href = "./assets/style/header.css">
     <link rel = "stylesheet" href = "./assets/style/banner.css">
     <link rel = "stylesheet" href = "./assets/style/footer.css">
-	  <link rel = "stylesheet" href = "./assets/style/registration.css">
+	<link rel = "stylesheet" href = "./assets/style/registration.css">
 	
     <link rel = "icon" href = "https://pbs.twimg.com/profile_images/810848436715192324/LceZ56vC_400x400.jpg">
 	
@@ -44,7 +52,10 @@ $db = mysqli_connect($host, $user, $pass, $database, $port);
 
 </head>
 <body>
+<?php
 
+
+?>
 <?php
 //validation server side
 $nameError = $emailError = $lnameError = $usernameError = $passwordError = $confirmError =  "";
