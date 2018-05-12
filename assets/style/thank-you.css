@@ -4,6 +4,23 @@
     text-align: center;
 }
 
+.completed img {
+    width: 30%;
+}
+
+@media screen and (max-width: 850px) {
+    .completed img {
+        width: 45%;
+    }
+}
+
+/* Styles for mobile layout */
+@media screen and (max-width: 600px) {
+    .completed img {
+        width: 75%;
+    }
+}
+
 #instruction {
     font-weight: bold;
 }
