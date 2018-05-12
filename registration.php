@@ -24,7 +24,7 @@ $db = mysqli_connect($host, $user, $pass, $database, $port);
       <meta charset="UTF-8">
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <meta http-equiv="X-UA-Compatible" content="ie=edge">
-      <title>JSM Detailing</title>
+      <title>JSM Customer Registration</title>
 
       <link rel = "stylesheet" href = "./assets/style/global.css">
       <link rel = "stylesheet" href = "./assets/style/header.css">
