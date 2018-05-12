@@ -99,5 +99,9 @@
   .item, .category h3{
     text-decoration: underline;
   }
+
+  .order button {
+    width: 50%;
+  }
 }
 
