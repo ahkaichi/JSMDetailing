@@ -1,0 +1,13 @@
+.completed {
+    width: 90%;
+    margin: 5% auto;
+    text-align: center;
+}
+
+#instruction {
+    font-weight: bold;
+}
+
+.fa-info-circle{
+    color: darkgreen;
+}

@@ -48,7 +48,7 @@ $db = mysqli_connect($host, $user, $pass, $database, $port);
                 <div class="topnav">
                     <a href="index.html" >Home</a>
                     <a href="portfolio.html">Portfolio</a>
-                    <a href="register.php">Registration</a>
+                    <a href="registration.php">Registration</a>
                     <a href="login.php" class="current">Schedule Service</a>
                 </div>
 
@@ -131,7 +131,7 @@ $db = mysqli_connect($host, $user, $pass, $database, $port);
             </form>  
 
             <p>Don't have an account?</p>
-            <a href="register.php">Create an Account</a>
+            <a href="registration.php">Create an Account</a>
         </div>
 
        
