@@ -167,10 +167,10 @@ $db = mysqli_connect($host, $user, $pass, $database, $port);
           <label for = "lname"><b> Last Name</b> </label><input type = "text" placeholder = "Enter Last Name" name = "lname" class = "required" id = "lname"  onfocus = "removeErrorHint(this)" value = "<?php echo $lname;?>">
           <span class = "error"><?php echo $lnameError;?></span><br>
           
-          <label for="email"><b> Email</b> </label><input type = "email"  name = "email" placeholder = "Enter Email" class = "required" id = "email" onfocus = "removeErrorHint(this)" value = "<?php echo $email;?>">
+          <label for="email"><b> Email</b> </label><input type = "email"  name = "email" placeholder = "Enter Email" class = "required" id = "email"  onfocus = "removeErrorHint(this)" value = "<?php echo $email;?>">
           <span class = "error"><?php echo $emailError;?></span><br>
           
-          <label for = "username"><b> Username </b> </label><input type = "text" placeholder = "Create Username" name ="username" class = "required" id = "username"  onfocus = "removeErrorHint(this)" value = "<?php echo $username;?>">
+          <label for = "username"><b> Username </b> </label><input type = "text" placeholder = "Create Username" name ="username" class = "required" id = "username" onfocus = "removeErrorHint(this)" value = "<?php echo $username;?>">
           <span class = "error"><?php echo $usernameError;?></span><br>
           
           <label for="password"><b> Password </b> </label><input type = "password" placeholder = "Create Password" name = "password" class = "required" id = "password" onfocus = "removeErrorHint(this)" value = "<?php echo $password;?>">
