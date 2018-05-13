@@ -150,7 +150,9 @@ function test_input($data) {
           <h2>Select vehicle type:<span class="error">* <?php echo $vehicleErr;?></span></h2>
           <div class="vehicle-type">
                 <div class="size">
-                    <h3>Coupe</h3>
+                    <label for="coupe">
+                        <h3>Coupe</h3>
+                    </label>
                     <img src="./assets/images/order/coupe.png" alt="coupe silhouette">
                     <input id="coupe" class="vehicle-type" type="radio" name="vehicle" <?php if (isset($vehicle) && $vehicle=="coupe") echo "checked";?> value="Coupe" >
                     +$0
@@ -158,13 +160,17 @@ function test_input($data) {
                 </div>
 
                 <div class="size">
-                    <h3>Sedan</h3>
+                    <label for="sedan">
+                        <h3>Sedan</h3>
+                    </label>
                     <img src="./assets/images/order/sedan.png" alt="sedan silhouette">
                     <input id="sedan" class="vehicle-type" type="radio" name="vehicle" <?php if (isset($vehicle) && $vehicle=="sedan") echo "checked";?>value="Sedan" >+$10
                 </div>
 
                 <div class="size">
-                    <h3>SUV</h3>
+                    <label for="suv">
+                        <h3>SUV</h3>
+                    </label>
                     <img src="./assets/images/order/suv.png" alt="suv silhouette">
                     <input id="suv" class="vehicle-type" type="radio" name="vehicle" <?php if (isset($vehicle) && $vehicle=="suv") echo "checked";?>value="SUV" >+$20
                 </div>
@@ -175,7 +181,9 @@ function test_input($data) {
               <div class="category-list">
                     <div class="category">
                         <img src="./assets/images/exterior-detail.png" alt="Exterior Detailing">
-                        <p class="item">Exterior Detailing</p>
+                        <label for="exterior">
+                            <p class="item">Exterior Detailing</p>
+                        </label>
                         <p class="item-cost">$400</p>
                         <ul class="list">
                             <li>Thorough hand wash</li>
@@ -189,7 +197,9 @@ function test_input($data) {
 
                     <div class = "category">
                         <img src="./assets/images/interior-detail.jpg" alt="Interior Cleaning">
-                        <p class="item">Interior Cleaning</p>
+                        <label for="interior">
+                            <p class="item">Interior Cleaning</p>
+                        </label>
                         <p class="item-cost">$250</p>
                         <ul class="list">
                             <li>Shampoo all carpet and upholstery</li>
@@ -204,7 +214,9 @@ function test_input($data) {
 
                     <div class="category">
                         <img src="./assets/images/headlight-detail.jpg" alt="Headlight Restoration">
-                        <p class="item">Headlight Restoration</p>
+                        <label for="headlights">
+                            <p class="item">Headlight Restoration</p>
+                        </label>
                         <p class="item-cost">$50</p>
                         <ul class="list">
                             <li>Resurface and restore clarity</li>
