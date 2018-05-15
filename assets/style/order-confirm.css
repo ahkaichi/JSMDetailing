@@ -4,18 +4,18 @@
 }
 
 .confirm-text img {
-    width: 30%;
+    width: 10%;
 }
 
 @media screen and (max-width: 850px) {
     .confirm-text img {
-        width: 45%;
+        width: 30%;
     }
 }
 
 /* Styles for mobile layout */
 @media screen and (max-width: 600px) {
     .confirm-text img {
-        width: 75%;
+        width: 50%;
     }
 }
