@@ -21,6 +21,7 @@
     <link rel = "stylesheet" href = "./assets/style/global.css">
     <link rel = "stylesheet" href = "./assets/style/header.css">
     <link rel = "stylesheet" href = "./assets/style/footer.css">
+    <link rel = "stylesheet" href = "./assets/style/order-confirm.css">
     <link rel = "icon" href = "https://pbs.twimg.com/profile_images/810848436715192324/LceZ56vC_400x400.jpg">
 
 </head>
@@ -42,6 +43,8 @@
   </header>
 
   <div class="confirm-text">
+    <img src="./assets/images/completed.png" alt="Green Check Mark">
+
     <h2>Order Number: <?php echo $orderNumber?></h2>
     <h3>Thank you for your order. Please print or show this receipt within a week of order submission to have your vehicle serviced.</h3>
     <p><b>Vehicle: </b> <?php echo $orderVehicle?></p>

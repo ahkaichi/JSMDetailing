@@ -1,0 +1,21 @@
+.confirm-text {
+    width: 90%;
+    margin: 5% auto;
+}
+
+.confirm-text img {
+    width: 30%;
+}
+
+@media screen and (max-width: 850px) {
+    .confirm-text img {
+        width: 45%;
+    }
+}
+
+/* Styles for mobile layout */
+@media screen and (max-width: 600px) {
+    .confirm-text img {
+        width: 75%;
+    }
+}
