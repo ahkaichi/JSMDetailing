@@ -72,7 +72,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $_SESSION["price-order"] = $price;
   
        clearValues();
-  
+        // Redirect to order confirmation page
        header("Location: ./order-confirm.php");
        
     }   

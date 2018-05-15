@@ -47,6 +47,7 @@
 
     <h2>Order Number: <?php echo $orderNumber?></h2>
     <h3>Thank you for your order. Please print or show this receipt within a week of order submission to have your vehicle serviced.</h3>
+    <p> <b>Date: </b> <?php echo date("m/d/Y") ?></p>
     <p><b>Vehicle: </b> <?php echo $orderVehicle?></p>
     <p><b>Price: </b>$ <?php echo $orderPrice ?></p>
     <p><b>Service(s) Purchased: </b> <?php echo nl2br($orderCart)?></p>
