@@ -25,6 +25,6 @@ The solution was tested for responsiveness and functionality on the following de
 
 ## Acknowledgments
 
-* [Raymond Chin] (https://github.com/Rcchin)
-* [Andrew Kaichi] (https://github.com/ahkaichi)
-* [Jordan Lever]  (https://github.com/JoLever)
+* [Raymond Chin](https://github.com/Rcchin)
+* [Andrew Kaichi](https://github.com/ahkaichi)
+* [Jordan Lever](https://github.com/JoLever)
