@@ -1,4 +1,4 @@
-# JSMDetailing
+# JSM Detailing
 CECS 470 Spring 2018  
 This is a repository for my CECS 470 term project. The goal of this project was to develop a website for a *pro bono* client. Our team chose to develop a site for JSM Detailing, an automotive detailing business based in Frisco, Texas. For our solution, we came up with the implemented the following features - customer registration, customer login, and customer service ordering. The delivered solution can be found at the following link.  
 http://web.csulb.edu/~013427386/jsm-detailing/index.html
